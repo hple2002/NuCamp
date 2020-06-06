@@ -6,7 +6,7 @@ function RenderPartner({partner}) {
     if(partner) {
         return(
             <React.Fragment>
-                <Media object src="{partner.image}" width="150" alt="{partner.name}" />
+                <Media object src={partner.image} width="150" alt={partner.name} />
                 <Media body className="ml-5 mb-4"> 
                     <Media heading>
                         {partner.name}
@@ -23,7 +23,9 @@ function About(props) {
 
     const partners = props.partners.map(partner => {
         return (
-            <h5>{partner.name}</h5>
+            <Media tag="li" key="{partner.id}">
+                <RenderPartner partner={partner} />
+            </Media>
         );
     });
 
