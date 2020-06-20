@@ -5,43 +5,11 @@ import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
-function PartnerList (props) {
-    const partners = props.partners.map(partner => {
-        return (
-            <Media tag="li" key="{partner.id}">
-                <RenderPartner partner={partner} />
-            </Media>
-        );
-    });
-
-    if (props.isLoading) {
-        return (
-                <Loading />
-        );
-    }
-    if (props.errMess) {
-        return (
-            <div className="col">
-
-                    <h4>{props.errMess}</h4>
-
-            </div>
-        );
-    }
-    return (
-        <div className="col mt-4">
-        <Media list>
-            {partners}
-        </Media>
-    </div>
-    )
-}
-
 function RenderPartner({partner}) {
     if(partner) {
         return(
             <React.Fragment>
-                <Media object src={baseUrl + partner.image} width="150" alt={partner.name} />
+                <Media object src={ baseUrl + partner.image} width="150" alt={partner.name} />
                 <Media body className="ml-5 mb-4"> 
                     <Media heading>
                         {partner.name}
@@ -53,6 +21,45 @@ function RenderPartner({partner}) {
     }
     return <div />;
 }
+
+
+function PartnerList (props) {
+
+    const partners = props.partners.partners.map(partner => {
+        return (
+            <Media tag="li" key="{partner.id}">
+                <RenderPartner partner={partner} />
+            </Media>
+        );
+    });
+
+
+    if (props.isLoading) {
+        return (
+
+                    <Loading />
+
+        );
+    }
+
+    if (props.errMess) {
+        return (
+            <div className="col">
+                    <h4>{props.errMess}</h4>
+            </div>
+        );
+    }
+
+    return (
+        <div className="col mt-4">
+        <Media list>
+            {partners}
+        </Media>
+    </div>
+    )
+}
+
+
 
 function About(props) {
 

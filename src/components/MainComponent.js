@@ -6,7 +6,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { postComment, fetchCampsites, fetchComments, fetchPromotions, fetchPartners  } from '../redux/ActionCreators';
+import { postComment, fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
@@ -55,8 +55,8 @@ class Main extends Component {
                     promotionErrMess={this.props.promotions.errMess}
 
                     partner={this.props.partners.partners.filter(partner => partner.featured)[0]}
-                    partnerLoading={this.props.partners.isLoading}
-                    partnerErrMess={this.props.partners.errMess}
+                    partnersLoading={this.props.partners.isLoading}
+                    partnersErrMess={this.props.partners.errMess}
 
                 />
             );
