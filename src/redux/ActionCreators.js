@@ -198,12 +198,12 @@ export const addPartners = partners => ({
 
 export const postFeedback = (feedback) => () => {
     
-    return fetch(baseUrl + 'feedbacks', {
+    return fetch(baseUrl + 'feedback', {
             method: "POST",
             body: JSON.stringify(feedback),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
         })
         .then(response => {
                 if (response.ok) {
@@ -229,4 +229,5 @@ export const postFeedback = (feedback) => () => {
             alert('Your feedback could not be posted\nError: ' + error.message);
         });
 };
+
 
