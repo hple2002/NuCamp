@@ -196,45 +196,37 @@ export const addPartners = partners => ({
 });
 
 
-// export const postFeedback = (feedback) => () => {
+export const postFeedback = (feedback) => () => {
     
-//     const newFeedback = {
-//         feedback: feedback
-//     };
-//     newFeedback.date = new Date().toISOString();
+    return fetch(baseUrl + 'feedbacks', {
+            method: "POST",
+            body: JSON.stringify(feedback),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => { throw error; }
+        )
+        .then(response => response.json())
 
-//     return fetch(baseUrl + 'feedbacks', {
-//             method: "POST",
-//             body: JSON.stringify(newFeedback),
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         })
-//         .then(response => {
-//                 if (response.ok) {
-//                     return response;
-//                 } else {
-//                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
-//                     error.response = response;
-//                     throw error;
-//                 }
-//             },
-//             error => { throw error; }
-//         )
-//         .then(response => response.json())
+        .then(response => {
+            console.log('Feedback: ', response);
+            alert('Thank you for your feedback.\n' + JSON.stringify(response));
+        } 
+        )
         
-//         .catch(error => {
-//             console.log('post feedback', error.message);
-//             alert('Your feedback could not be posted\nError: ' + error.message);
-//         });
-// };
+        .catch(error => {
+            console.log('Feedback', error.message);
+            alert('Your feedback could not be posted\nError: ' + error.message);
+        });
+};
 
-// export const addFeedbacks = feedbacks => ({
-//     type: ActionTypes.ADD_FEEDBACKS,
-//     payload: feedbacks
-// });
-
-// export const addFeedback = feedback => ({
-//     type: ActionTypes.ADD_FEEDBACK,
-//     payload: feedback
-// });
