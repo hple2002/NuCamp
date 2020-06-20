@@ -34,18 +34,16 @@ function PartnerList (props) {
     });
 
 
-    if (props.isLoading) {
+    if (props.partners.isLoading) {
         return (
-
-                    <Loading />
-
+            <Loading />
         );
     }
 
-    if (props.errMess) {
+    if (props.partners.errMess) {
         return (
             <div className="col">
-                    <h4>{props.errMess}</h4>
+                    <h4>{props.partners.errMess}</h4>
             </div>
         );
     }

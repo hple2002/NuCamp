@@ -55,8 +55,8 @@ class Main extends Component {
                     promotionErrMess={this.props.promotions.errMess}
 
                     partner={this.props.partners.partners.filter(partner => partner.featured)[0]}
-                    partnersLoading={this.props.partners.isLoading}
-                    partnersErrMess={this.props.partners.errMess}
+                    partnerLoading={this.props.partners.isLoading}
+                    partnerErrMess={this.props.partners.errMess}
 
                 />
             );
@@ -83,7 +83,7 @@ class Main extends Component {
                             <Route path='/home' component={HomePage} />
                             <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
                             <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-                            <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} /> } />
+                            <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} /> } />
                             <Route exact path='/aboutus' render={() => <About partners={this.props.partners} /> } />
                             <Redirect to='/home' />
                         </Switch>
